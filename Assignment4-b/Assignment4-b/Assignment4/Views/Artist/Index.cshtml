@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Assignment4.Models.ArtistBaseViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>List of artists</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthOrStartDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UrlArtist)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthOrStartDate)
+        </td>
+        <td>
+            <img src="@item.UrlArtist" height="130" width="125" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genre)
+        </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) 
+        </td>
+    </tr>
+}
+
+</table>
